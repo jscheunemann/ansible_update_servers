@@ -27,4 +27,6 @@ mkdir -p ${HOME}/${SCRIPT_FRIENDLY_NAME}_logs
 
 exec &> >(tee "${HOME}/${SCRIPT_FRIENDLY_NAME}_logs/${SCRIPT_FRIENDLY_NAME}_$(date +%Y_%m_%d).log")
 
+echo "Executed $(date)"
+
 ansible-playbook -i ${HOME}/ansible/hosts ${HOME}/ansible_update_servers/os-updates.yml --become
