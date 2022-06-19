@@ -30,3 +30,7 @@ exec &> >(tee "${HOME}/${SCRIPT_FRIENDLY_NAME}_logs/${SCRIPT_FRIENDLY_NAME}_$(da
 echo "Executed $(date)"
 
 ansible-playbook -i ${HOME}/ansible/hosts ${HOME}/ansible_update_servers/os-updates.yml --become
+
+if [ $(tmux list-clients | wc -l) -gt 0 ]; then
+    read -p "Operation complete, press [enter] to continue "
+fi
