@@ -1,0 +1,18 @@
+---
+- name: Upgrade os packages
+  hosts: all
+  remote_user: jason
+  gather_facts: True
+
+  tasks:
+  - name: Install yum-utils for needs-restarting functionality
+    package:
+      name:  yum-utils
+      state: latest
+    when: ansible_facts['os_family'] == 'RedHat'
+
+  - name: Install debian-goodies for needs-restarting functionality
+    package:
+      name:  debian-goodies
+      state: latest
+    when: ansible_facts['os_family'] == 'Debian'

@@ -1,0 +1,8 @@
+---
+- name: Upgrade os packages
+  hosts: all
+  remote_user: jason
+
+  tasks:
+  - name: Check if docker is enabled
+    ansible.builtin.command: systemctl is-enabled docker
